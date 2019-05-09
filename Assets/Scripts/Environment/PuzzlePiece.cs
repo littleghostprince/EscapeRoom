@@ -33,7 +33,7 @@ public class PuzzlePiece : MonoBehaviour
                     m_currentIndex++;
                     if (m_currentIndex >= m_gameObjects.Length) m_currentIndex = 0;
 
-                    m_currentObject.GetComponent<MeshRenderer>() = m_gameObjects[m_currentIndex].GetComponent<MeshRenderer>();
+                    //m_currentObject.GetComponent<MeshRenderer>() = m_gameObjects[m_currentIndex].GetComponent<MeshRenderer>();
                 }
             }
         }

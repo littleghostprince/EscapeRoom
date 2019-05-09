@@ -16,16 +16,14 @@ public class NodeWalker : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         foreach (KeyCode key in forwardKeys)
         {
             if (Input.GetKeyDown(key))
             {
-                if (current.m_nodes[0] != null)
+                if (current.m_nodes[0] != null && current.m_nodes[0].isActiveAndEnabled)
                 {
-                    transform.position = current.m_nodes[0].transform.position;
                     current = current.m_nodes[0];
                 }
             }
@@ -34,9 +32,8 @@ public class NodeWalker : MonoBehaviour
         {
             if (Input.GetKeyDown(key))
             {
-                if (current.m_nodes[1] != null)
+                if (current.m_nodes[1] != null && current.m_nodes[1].isActiveAndEnabled)
                 {
-                    transform.position = current.m_nodes[1].transform.position;
                     current = current.m_nodes[1];
                 }
             }
@@ -45,9 +42,8 @@ public class NodeWalker : MonoBehaviour
         {
             if (Input.GetKeyDown(key))
             {
-                if (current.m_nodes[2] != null)
+                if (current.m_nodes[2] != null && current.m_nodes[2].isActiveAndEnabled)
                 {
-                    transform.position = current.m_nodes[2].transform.position;
                     current = current.m_nodes[2];
                 }
             }
@@ -56,12 +52,13 @@ public class NodeWalker : MonoBehaviour
         {
             if (Input.GetKeyDown(key))
             {
-                if (current.m_nodes[3] != null)
+                if (current.m_nodes[3] != null && current.m_nodes[3].isActiveAndEnabled)
                 {
-                    transform.position = current.m_nodes[3].transform.position;
                     current = current.m_nodes[3];
                 }
             }
         }
+        transform.position = current.transform.position;
+        transform.rotation = current.transform.rotation;
     }
 }
