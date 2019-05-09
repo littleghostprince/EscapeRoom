@@ -7,10 +7,6 @@ public class PuzzlePiece : MonoBehaviour
 {
     [SerializeField] GameObject[] m_gameObjects;
     public int m_currentIndex { get; set; } = 0;
-    
-
-    [SerializeField] int m_nodeField;
-    [SerializeField] int m_nodeID = 0;
 
     void Start()
     {

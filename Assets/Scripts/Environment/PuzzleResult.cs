@@ -9,11 +9,14 @@ public class PuzzleResult : MonoBehaviour
     [SerializeField] int m_currentIndex = 0;
 
     [SerializeField] PuzzlePiece[] m_puzzlePieces;
-    bool puzzleCompleate = false;
+    [SerializeField] int[] m_solutionIndexs;
+
+    int solution = 0;
+    int width;
 
     void Start()
     {
-
+        width = m_puzzlePieces.Length;
         if (m_currentIndex < 0 || m_currentIndex >= m_gameObjects.Length) m_currentIndex = 0;
         for (int f = 0; f < m_gameObjects.Length; f++)
         {
@@ -24,14 +27,28 @@ public class PuzzleResult : MonoBehaviour
     
     void Update()
     {
-        if (m_puzzlePieces[0].m_currentIndex == 1 && m_puzzlePieces[1].m_currentIndex == 0 && m_puzzlePieces[2].m_currentIndex == 1)
+        for (int f = 0; f < m_solutionIndexs.Length / width; f++)
+        {
+            solution = (f + 1);
+            for (int n = 0; n < width; n++)
+            {
+                if (m_solutionIndexs[n + (width * f)] != m_puzzlePieces[n].m_currentIndex)
+                {
+                    solution = 0;
+                    break;
+                }
+            }
+            if (solution != 0) break;
+        }
+
+        if (solution == 1)
         {
             m_gameObjects[m_currentIndex].SetActive(false);
             m_currentIndex = 1;
             m_gameObjects[m_currentIndex].SetActive(true);
         }
-        else if (m_puzzlePieces[0].m_currentIndex == 1 && m_puzzlePieces[1].m_currentIndex == 2 && m_puzzlePieces[2].m_currentIndex == 1)
-        {
+        else if (solution == 2)
+            {
             m_gameObjects[m_currentIndex].SetActive(false);
             m_currentIndex = 2;
             m_gameObjects[m_currentIndex].SetActive(true);
@@ -42,6 +59,5 @@ public class PuzzleResult : MonoBehaviour
             m_currentIndex = 0;
             m_gameObjects[m_currentIndex].SetActive(true);
         }
-
     }
 }
