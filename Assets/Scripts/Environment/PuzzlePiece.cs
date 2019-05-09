@@ -36,11 +36,8 @@ public class PuzzlePiece : MonoBehaviour
                     m_currentIndex++;
                     if (m_currentIndex >= m_gameObjects.Length) m_currentIndex = 0;
 
-<<<<<<< HEAD
                     //m_currentObject.GetComponent<MeshRenderer>() = m_gameObjects[m_currentIndex].GetComponent<MeshRenderer>();
-=======
                     m_gameObjects[m_currentIndex].SetActive(true);
->>>>>>> 80ad216fef1ab856454c682caa322a7875e90a3a
                 }
             }
         }
