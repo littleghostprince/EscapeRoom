@@ -6,8 +6,8 @@ using UnityEngine;
 public class PuzzlePiece : MonoBehaviour
 {
     [SerializeField] GameObject[] m_gameObjects;
-    [SerializeField] int m_currentIndex = 0;
-    [SerializeField] GameObject m_currentObject;
+    public int m_currentIndex { get; set; } = 0;
+    
 
     [SerializeField] int m_nodeField;
     [SerializeField] int m_nodeID = 0;
@@ -15,7 +15,11 @@ public class PuzzlePiece : MonoBehaviour
     void Start()
     {
         if (m_currentIndex < 0 || m_currentIndex >= m_gameObjects.Length) m_currentIndex = 0;
-        m_currentObject = m_gameObjects[m_currentIndex];
+        for(int f = 0; f < m_gameObjects.Length; f++)
+        {
+            m_gameObjects[f].SetActive(false);
+        }
+        m_gameObjects[m_currentIndex].SetActive(true);
     }
 
     void Update()
@@ -30,10 +34,13 @@ public class PuzzlePiece : MonoBehaviour
 
                 if (objectHit.position == this.transform.position)
                 {
+                    Debug.Log("PuzzlePiece Clicked");
+                    m_gameObjects[m_currentIndex].SetActive(false);
+
                     m_currentIndex++;
                     if (m_currentIndex >= m_gameObjects.Length) m_currentIndex = 0;
 
-                    m_currentObject.GetComponent<MeshRenderer>() = m_gameObjects[m_currentIndex].GetComponent<MeshRenderer>();
+                    m_gameObjects[m_currentIndex].SetActive(true);
                 }
             }
         }
