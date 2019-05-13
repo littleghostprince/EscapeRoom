@@ -1,16 +1,31 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
     [SerializeField] GameObject slotHolder = null;
+    bool inventoryEnabled = false;
+
+    public int CountSelect { get
+        {
+            int count = 0;
+            for(int i = 0; i < m_SelectedItems.Length; i ++)
+            {
+                if (m_SelectedItems[i] != null) count++;
+            }
+            return count;
+        } }
+
+    public List<GameObject> m_combineItem = new List<GameObject>(); //list of valid combine items
     public int num_Slots;
+    public GameObject[] m_items;
 
-    GameObject[] m_items;
-    List<GameObject> m_combineItem = new List<GameObject>(); //list of valid combine items
+    //static 
+    public static GameObject[] m_SelectedItems = new GameObject[2];
 
-    bool inventoryEnabled = false; 
 
     void Start()
     {
@@ -44,12 +59,18 @@ public class Inventory : MonoBehaviour
                     Debug.Log("This is an item");
                     onClick(hit.transform.gameObject);
                 }
-               
-            }
+
+            }           
+            
         }
 
+        if (CountSelect == 2) //if we have 2 selected already do this.
+        {
+            combineItem(m_SelectedItems[0], m_SelectedItems[1]);
+            Debug.Log("Done Combine");
+        }
     }
-
+   
     public void onClick(GameObject other)
     {
             Debug.Log("Entered onClick Method");
@@ -80,14 +101,23 @@ public class Inventory : MonoBehaviour
         Debug.Log(item.name + " been added to inventory");
     }
 
-    public void removeItem(GameObject item)
+    public bool removeItem(GameObject item)
     {
-     //  if(m_items.Remove(item))
+        for(int i = 0; i < num_Slots; i ++)
         {
-            Debug.Log("item removed");
-            return;
+            if(m_items[i].GetComponent<Slot>().m_item == item)
+            {
+                m_items[i].GetComponent<Slot>().empty = true;
+                m_items[i].GetComponent<Slot>().m_item = null;
+                m_items[i].GetComponent<Slot>().Icon = null;
+
+                m_items[i].GetComponent<Slot>().UpdateSlot();
+                Debug.Log("item removed");
+                return true;
+            }
         }
         Debug.Log("item not in inventory/ unable to remove");
+        return false;
     }
 
     public void addToCombineItem(GameObject newItem)
@@ -101,25 +131,39 @@ public class Inventory : MonoBehaviour
 
     public void combineItem(GameObject item1, GameObject item2)
     {
-        foreach(GameObject item in m_combineItem) //go through and see if there is a valid combine item
+        foreach (GameObject item in m_combineItem) //go through and see if there is a valid combine item
         {
-            if( (item.GetComponent<Item>().needed_Item1 == item1.GetComponent<Item>().name && item.GetComponent<Item>().needed_Item2 == item2.GetComponent<Item>().name) || (item.GetComponent<Item>().needed_Item1 == item2.GetComponent<Item>().name && item.GetComponent<Item>().needed_Item2 == item1.GetComponent<Item>().name )) //if found valid combine item
+            if ((item.GetComponent<Item>().needed_Item1 == item1.GetComponent<Item>().m_name && item.GetComponent<Item>().needed_Item2 == item2.GetComponent<Item>().m_name) || (item.GetComponent<Item>().needed_Item1 == item2.GetComponent<Item>().m_name && item.GetComponent<Item>().needed_Item2 == item1.GetComponent<Item>().m_name)) //if found valid combine item
             {
                 //remove the two items used
-              //  m_items.Remove(item1);
-              //  m_items.Remove(item2);
+                removeItem(item1);
+                removeItem(item2);
 
                 Destroy(item1.gameObject);
                 Destroy(item2.gameObject);
 
-
-              //  m_items.Add(item); //add the combine item
+              //add the combine item
+              addItem(item);
 
                 Debug.Log("Item was combined. New item in inventory");
             }
         }
     }
-    
+
+    //static methods
+    public static bool addSelectedItem(GameObject ob)
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            if (m_SelectedItems[i] == null) //if empty
+            {
+                m_SelectedItems[i] = ob;
+                return true; //if found a spot return true
+            }
+        }
+        return false; //if there is no spot
+    }
+
 
 
 
