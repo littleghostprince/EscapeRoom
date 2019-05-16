@@ -11,11 +11,14 @@ public class PuzzleResult : MonoBehaviour
     [SerializeField] PuzzlePiece[] m_puzzlePieces;
     [SerializeField] int[] m_solutionIndexs;
 
+    [SerializeField] Node m_node;
+
     int solution = 0;
     int width;
 
     void Start()
     {
+        //m_node.gameObject.SetActive(false);
         width = m_puzzlePieces.Length;
         if (m_currentIndex < 0 || m_currentIndex >= m_gameObjects.Length) m_currentIndex = 0;
         for (int f = 0; f < m_gameObjects.Length; f++)
@@ -46,18 +49,27 @@ public class PuzzleResult : MonoBehaviour
             m_gameObjects[m_currentIndex].SetActive(false);
             m_currentIndex = 1;
             m_gameObjects[m_currentIndex].SetActive(true);
+
+
+            m_node.gameObject.SetActive(true);
         }
         else if (solution == 2)
             {
             m_gameObjects[m_currentIndex].SetActive(false);
             m_currentIndex = 2;
             m_gameObjects[m_currentIndex].SetActive(true);
+
+
+            m_node.gameObject.SetActive(false);
         }
         else
         {
             m_gameObjects[m_currentIndex].SetActive(false);
             m_currentIndex = 0;
             m_gameObjects[m_currentIndex].SetActive(true);
+
+
+            //m_node.gameObject.SetActive(false);
         }
     }
 }

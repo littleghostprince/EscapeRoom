@@ -15,6 +15,4 @@ public class Item : MonoBehaviour
     //if so fill out this information! 
     public string needed_Item1;
     public string needed_Item2;
-
-   
 }
