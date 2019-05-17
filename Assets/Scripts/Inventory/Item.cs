@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Item : MonoBehaviour
 {
@@ -10,9 +11,10 @@ public class Item : MonoBehaviour
     public string m_name;
 
     public bool isCombinedItem = false; //is this an item that can only be made by combining items?
-    public bool isUse = false; 
 
     //if so fill out this information! 
-    public string needed_Item1;
+    public string needed_Item1; //this can be used with interactive as well
     public string needed_Item2;
+
+
 }
