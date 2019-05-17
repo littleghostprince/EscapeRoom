@@ -164,14 +164,13 @@ public class Inventory : MonoBehaviour
         return false; //if there is no spot
     }
 
-    public static bool deleteSelectedItem(GameObject ob)
+    public static void deleteSelectedItem(GameObject ob)
     {
         for(int i = 0; i < 2; i++)
         {
             if(m_SelectedItems[i] == ob)
             {
                 m_SelectedItems[i] = null;
-                return true;
             }
         }
 
@@ -182,7 +181,6 @@ public class Inventory : MonoBehaviour
             m_SelectedItems[0] = temp;
             m_SelectedItems[1] = null;
         }
-        return false; //if item was not found
     }
 
 
