@@ -7,6 +7,9 @@ public class PuzzlePiece : MonoBehaviour
 {
     [SerializeField] GameObject[] m_gameObjects;
     public int m_currentIndex { get; set; } = 0;
+    [SerializeField] string m_itemName = "null";
+
+    public bool m_done;
 
     void Start()
     {
@@ -20,24 +23,30 @@ public class PuzzlePiece : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!m_done)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            if (Input.GetMouseButtonDown(0))
             {
-                Transform objectHit = hit.transform;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-                if (objectHit.position == this.transform.position)
+                if (Physics.Raycast(ray, out RaycastHit hit))
                 {
-                    Debug.Log("PuzzlePiece Clicked");
-                    m_gameObjects[m_currentIndex].SetActive(false);
+                    if (m_itemName == "null" || m_itemName == Inventory.m_SelectedItems[0].GetComponent<Item>().m_name)
+                    {
+                        Transform objectHit = hit.transform;
 
-                    m_currentIndex++;
-                    if (m_currentIndex >= m_gameObjects.Length) m_currentIndex = 0;
+                        if (objectHit.position == this.transform.position)
+                        {
+                            Debug.Log("PuzzlePiece Clicked");
+                            m_gameObjects[m_currentIndex].SetActive(false);
 
-                    //m_currentObject.GetComponent<MeshRenderer>() = m_gameObjects[m_currentIndex].GetComponent<MeshRenderer>();
-                    m_gameObjects[m_currentIndex].SetActive(true);
+                            m_currentIndex++;
+                            if (m_currentIndex >= m_gameObjects.Length) m_currentIndex = 0;
+
+                            //m_currentObject.GetComponent<MeshRenderer>() = m_gameObjects[m_currentIndex].GetComponent<MeshRenderer>();
+                            m_gameObjects[m_currentIndex].SetActive(true);
+                        }
+                    }
                 }
             }
         }

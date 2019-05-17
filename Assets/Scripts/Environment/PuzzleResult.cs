@@ -13,6 +13,8 @@ public class PuzzleResult : MonoBehaviour
 
     [SerializeField] Node m_node;
 
+    bool m_done = false;
+
     int solution = 0;
     int width;
 
@@ -27,49 +29,56 @@ public class PuzzleResult : MonoBehaviour
         }
         m_gameObjects[m_currentIndex].SetActive(true);
     }
-    
+
     void Update()
     {
-        for (int f = 0; f < m_solutionIndexs.Length / width; f++)
-        {
-            solution = (f + 1);
-            for (int n = 0; n < width; n++)
+        if (!m_done) {
+            for (int f = 0; f < m_solutionIndexs.Length / width; f++)
             {
-                if (m_solutionIndexs[n + (width * f)] != m_puzzlePieces[n].m_currentIndex)
+                solution = (f + 1);
+                for (int n = 0; n < width; n++)
                 {
-                    solution = 0;
-                    break;
+                    if (m_solutionIndexs[n + (width * f)] != m_puzzlePieces[n].m_currentIndex)
+                    {
+                        solution = 0;
+                        break;
+                    }
                 }
+                if (solution != 0) break;
             }
-            if (solution != 0) break;
-        }
 
-        if (solution == 1)
-        {
-            m_gameObjects[m_currentIndex].SetActive(false);
-            m_currentIndex = 1;
-            m_gameObjects[m_currentIndex].SetActive(true);
-
-
-            m_node.gameObject.SetActive(true);
-        }
-        else if (solution == 2)
+            if (solution == 1)
             {
-            m_gameObjects[m_currentIndex].SetActive(false);
-            m_currentIndex = 2;
-            m_gameObjects[m_currentIndex].SetActive(true);
+                m_gameObjects[m_currentIndex].SetActive(false);
+                m_currentIndex = 1;
+                m_gameObjects[m_currentIndex].SetActive(true);
 
+                m_node.gameObject.SetActive(true);
+                m_done = true;
+            }
+            else if (solution == 2)
+            {
+                m_gameObjects[m_currentIndex].SetActive(false);
+                m_currentIndex = 2;
+                m_gameObjects[m_currentIndex].SetActive(true);
 
-            m_node.gameObject.SetActive(false);
-        }
-        else
+                m_node.gameObject.SetActive(false);
+                m_done = true;
+            }
+            else
+            {
+                m_gameObjects[m_currentIndex].SetActive(false);
+                m_currentIndex = 0;
+                m_gameObjects[m_currentIndex].SetActive(true);
+
+                m_node.gameObject.SetActive(false);
+            }
+        } else
         {
-            m_gameObjects[m_currentIndex].SetActive(false);
-            m_currentIndex = 0;
-            m_gameObjects[m_currentIndex].SetActive(true);
-
-
-            m_node.gameObject.SetActive(false);
+            foreach (PuzzlePiece puzzlePiece in m_puzzlePieces)
+            {
+                puzzlePiece.m_done = true;
+            }
         }
     }
 }

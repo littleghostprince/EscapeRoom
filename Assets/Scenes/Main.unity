@@ -539,6 +539,8 @@ MonoBehaviour:
   - {fileID: 1407683116}
   - {fileID: 1907222436}
   - {fileID: 367941445}
+  m_itemName: null
+  m_done: 0
 --- !u!4 &193207313
 Transform:
   m_ObjectHideFlags: 0
@@ -1048,7 +1050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_item: {fileID: 457903548}
   itemIcon: {fileID: 21300000, guid: bf59fb92459121545b96ce2a13c194db, type: 3}
-  m_name: Box
+  m_name: Box2
   isCombinedItem: 0
   isUse: 0
   needed_Item1: 
@@ -3885,7 +3887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_item: {fileID: 1603960951}
   itemIcon: {fileID: 21300000, guid: bf59fb92459121545b96ce2a13c194db, type: 3}
-  m_name: Box
+  m_name: Box1
   isCombinedItem: 0
   isUse: 0
   needed_Item1: 
@@ -4025,6 +4027,8 @@ MonoBehaviour:
   - {fileID: 404487373}
   - {fileID: 1371850008}
   - {fileID: 1145024178}
+  m_itemName: Box1
+  m_done: 0
 --- !u!4 &1613053994
 Transform:
   m_ObjectHideFlags: 0
@@ -4731,6 +4735,8 @@ MonoBehaviour:
   - {fileID: 200262627}
   - {fileID: 1715327916}
   - {fileID: 796720184}
+  m_itemName: Box2
+  m_done: 0
 --- !u!4 &1733786102
 Transform:
   m_ObjectHideFlags: 0
