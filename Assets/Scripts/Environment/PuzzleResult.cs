@@ -18,7 +18,7 @@ public class PuzzleResult : MonoBehaviour
 
     void Start()
     {
-        //m_node.gameObject.SetActive(false);
+        m_node.gameObject.SetActive(false);
         width = m_puzzlePieces.Length;
         if (m_currentIndex < 0 || m_currentIndex >= m_gameObjects.Length) m_currentIndex = 0;
         for (int f = 0; f < m_gameObjects.Length; f++)
@@ -69,7 +69,7 @@ public class PuzzleResult : MonoBehaviour
             m_gameObjects[m_currentIndex].SetActive(true);
 
 
-            //m_node.gameObject.SetActive(false);
+            m_node.gameObject.SetActive(false);
         }
     }
 }
