@@ -174,8 +174,17 @@ public class Inventory : MonoBehaviour
                 return true;
             }
         }
+
+        //switches position
+        if(m_SelectedItems[0] == null && m_SelectedItems[1] != null)
+        {
+            GameObject temp = m_SelectedItems[1];
+            m_SelectedItems[0] = temp;
+            m_SelectedItems[1] = null;
+        }
         return false; //if item was not found
     }
+
 
 
 }
