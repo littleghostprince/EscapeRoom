@@ -183,6 +183,18 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public static bool isSelectFull()
+    {
+        int count = 0; 
+        for (int i = 0; i < 2;i++)
+        {
+            if (m_SelectedItems[i] != null) count++;
+        }
+
+        if (count >= 2) return true;
+        else return false;
+    }
+
 
 
 }
