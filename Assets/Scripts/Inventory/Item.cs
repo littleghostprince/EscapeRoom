@@ -16,15 +16,5 @@ public class Item : MonoBehaviour
     public string needed_Item1; //this can be used with interactive as well
     public string needed_Item2;
 
-    //for interactive Items
-    public bool isInteractive = false;
-
-    public void onClickInteraction()
-    {
-        if(Inventory.m_SelectedItems[0].GetComponent<Item>().m_name == needed_Item1)
-        {
-            Debug.Log("Do a thing ");
-        }
-    }
 
 }

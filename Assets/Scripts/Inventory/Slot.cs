@@ -30,6 +30,7 @@ public class Slot : MonoBehaviour
                 m_button.GetComponent<Image>().color = new Color(255f, 255f, 255f, 0.5f);
                 //delete from  addSelectedItem
                 Inventory.deleteSelectedItem(m_item);
+
             }
             else
             {

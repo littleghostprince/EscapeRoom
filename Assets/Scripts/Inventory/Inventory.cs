@@ -164,18 +164,37 @@ public class Inventory : MonoBehaviour
         return false; //if there is no spot
     }
 
-    public static bool deleteSelectedItem(GameObject ob)
+    public static void deleteSelectedItem(GameObject ob)
     {
         for(int i = 0; i < 2; i++)
         {
             if(m_SelectedItems[i] == ob)
             {
                 m_SelectedItems[i] = null;
-                return true;
             }
         }
-        return false; //if item was not found
+
+        //switches position
+        if(m_SelectedItems[0] == null && m_SelectedItems[1] != null)
+        {
+            GameObject temp = m_SelectedItems[1];
+            m_SelectedItems[0] = temp;
+            m_SelectedItems[1] = null;
+        }
     }
+
+    public static bool isSelectFull()
+    {
+        int count = 0; 
+        for (int i = 0; i < 2;i++)
+        {
+            if (m_SelectedItems[i] != null) count++;
+        }
+
+        if (count >= 2) return true;
+        else return false;
+    }
+
 
 
 }
