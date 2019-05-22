@@ -930,7 +930,7 @@ GameObject:
   - component: {fileID: 457903549}
   - component: {fileID: 457903555}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Screwdriver
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1050,8 +1050,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_item: {fileID: 457903548}
-  itemIcon: {fileID: 21300000, guid: bf59fb92459121545b96ce2a13c194db, type: 3}
-  m_name: Box2
+  itemIcon: {fileID: 21300000, guid: fa6720ae19a7c644d9e112e7e70c3123, type: 3}
+  m_name: screwdriver
   isCombinedItem: 0
   needed_Item1: 
   needed_Item2: 
@@ -3049,11 +3049,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_item: {fileID: 1368853785}
-  itemIcon: {fileID: 21300000, guid: 3db716beb3767444cbb8bcbcdf3357c1, type: 3}
+  itemIcon: {fileID: 21300000, guid: b3ad0052c12485243bfff1b3bc5f6bde, type: 3}
   m_name: Circle
   isCombinedItem: 1
-  needed_Item1: Box1
-  needed_Item2: Box2
+  needed_Item1: bobbypin
+  needed_Item2: screwdriver
 --- !u!135 &1368853787
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3989,7 +3989,7 @@ GameObject:
   - component: {fileID: 1603960953}
   - component: {fileID: 1603960952}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Bobbypin
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4008,8 +4008,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_item: {fileID: 1603960951}
-  itemIcon: {fileID: 21300000, guid: bf59fb92459121545b96ce2a13c194db, type: 3}
-  m_name: Box1
+  itemIcon: {fileID: 21300000, guid: b23b81286f7ed8c479f08aeb61bc2e09, type: 3}
+  m_name: bobbypin
   isCombinedItem: 0
   needed_Item1: 
   needed_Item2: 
