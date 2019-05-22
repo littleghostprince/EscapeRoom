@@ -38,6 +38,8 @@ public class Inventory : MonoBehaviour
 
             if (m_items[i].GetComponent<Slot>().m_item == null)
                 m_items[i].GetComponent<Slot>().empty = true;
+
+            if (m_items[i].activeSelf == true) m_items[i].SetActive(false);
         }
     }
     void Update()
@@ -95,6 +97,8 @@ public class Inventory : MonoBehaviour
                 m_items[i].GetComponent<Slot>().UpdateSlot();
                 m_items[i].GetComponent<Slot>().empty = false;
 
+                m_items[i].SetActive(true);
+
                 break;
             }
         }
@@ -112,6 +116,7 @@ public class Inventory : MonoBehaviour
                 m_items[i].GetComponent<Slot>().Icon = null;
 
                 m_items[i].GetComponent<Slot>().UpdateSlot();
+                m_items[i].SetActive(false);
                 Debug.Log("item removed");
                 return true;
             }
