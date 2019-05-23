@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Node : MonoBehaviour
 {
-    public string m_name = "";
-    public List<Node> m_nodes = null;
-
+    public string m_ID = "";
+    //public List<Node> m_nodes = new List<Node>();
+    //[NamedArrayAttribute(new string[] { "Forward", "Left", "Back", "Right" })]
+    public Node[] m_nodes = new Node[4];
 }
