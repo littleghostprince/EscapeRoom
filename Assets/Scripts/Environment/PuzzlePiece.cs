@@ -6,7 +6,7 @@ using UnityEngine;
 public class PuzzlePiece : MonoBehaviour
 {
     [SerializeField] GameObject[] m_gameObjects;
-    public int m_currentIndex { get; set; } = 0;
+    public int m_currentIndex = 0;
     [SerializeField] string m_itemName = "null";
 
     public bool m_done;
@@ -35,7 +35,7 @@ public class PuzzlePiece : MonoBehaviour
                     {
                         Transform objectHit = hit.transform;
 
-                        if (objectHit.position == this.transform.position)
+                        if (transform.position.x == objectHit.transform.position.x && transform.position.z == objectHit.transform.position.z)
                         {
                             Debug.Log("PuzzlePiece Clicked");
                             m_gameObjects[m_currentIndex].SetActive(false);
