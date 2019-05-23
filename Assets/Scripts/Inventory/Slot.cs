@@ -16,7 +16,7 @@ public class Slot : MonoBehaviour
     public void UpdateSlot()
     {
         this.GetComponent<Image>().sprite = Icon;
-        m_button.GetComponent<Image>().color = new Color(255f, 255f, 255f, 0.5f);
+        m_button.GetComponent<Image>().color = new Color(255f, 255f, 255f, 0.0f);
     }
 
     public void SelectItem()
@@ -27,7 +27,7 @@ public class Slot : MonoBehaviour
             {
                 Debug.Log("deSelect");
                 isSelected = false;
-                m_button.GetComponent<Image>().color = new Color(255f, 255f, 255f, 0.5f);
+                m_button.GetComponent<Image>().color = new Color(255f, 255f, 255f, 0.0f);
                 //delete from  addSelectedItem
                 Inventory.deleteSelectedItem(m_item);
 
