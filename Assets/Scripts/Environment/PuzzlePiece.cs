@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SphereCollider))]
+
 public class PuzzlePiece : MonoBehaviour
 {
     [SerializeField] GameObject[] m_gameObjects;
-    public int m_currentIndex { get; set; } = 0;
+    public int m_currentIndex = 0;
     [SerializeField] string m_itemName = "null";
 
     public bool m_done;
@@ -31,11 +31,11 @@ public class PuzzlePiece : MonoBehaviour
 
                 if (Physics.Raycast(ray, out RaycastHit hit))
                 {
-                    if (m_itemName == "null" || m_itemName == Inventory.m_SelectedItems[0].GetComponent<Item>().m_name)
+                    if (m_itemName == "null" || ((Inventory.m_SelectedItems[0] != null) && m_itemName == Inventory.m_SelectedItems[0].GetComponent<Item>().m_name))
                     {
                         Transform objectHit = hit.transform;
 
-                        if (objectHit.position == this.transform.position)
+                        if (transform.position.x == objectHit.transform.position.x && transform.position.z == objectHit.transform.position.z)
                         {
                             Debug.Log("PuzzlePiece Clicked");
                             m_gameObjects[m_currentIndex].SetActive(false);
