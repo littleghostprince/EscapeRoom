@@ -26,6 +26,12 @@ public class Timer : MonoBehaviour
             timer = TimeSpan.FromSeconds(ticks);
             uiText.text = timer.ToString(@"h\.mm\:ss");
         }
+
+        if (Input.GetKeyUp(KeyCode.U))
+        {
+            stop();
+            HighscoreTable.AddHighscoreEntry(timer.ToString(@"h\.mm\:ss"), "test2", "default");
+        }
     }
 
     public TimeSpan stop()
