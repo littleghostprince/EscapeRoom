@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class ScoreEntry : IComparable
+[CreateAssetMenu(fileName = "ScoreEntry", menuName = "Score")]
+public class ScoreEntry : ScriptableObject , IComparable
 {
     public TimeSpan m_time = TimeSpan.Zero;
     public string m_name = "";
