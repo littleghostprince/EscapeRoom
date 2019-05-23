@@ -31,7 +31,7 @@ public class PuzzlePiece : MonoBehaviour
 
                 if (Physics.Raycast(ray, out RaycastHit hit))
                 {
-                    if (m_itemName == "null" || m_itemName == Inventory.m_SelectedItems[0].GetComponent<Item>().m_name)
+                    if (m_itemName == "null" || ((Inventory.m_SelectedItems[0] != null) && m_itemName == Inventory.m_SelectedItems[0].GetComponent<Item>().m_name))
                     {
                         Transform objectHit = hit.transform;
 
