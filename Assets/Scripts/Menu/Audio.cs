@@ -20,7 +20,6 @@ public class Audio : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("is entering");
         if (m_mainMusic.isPlaying)
         {
             m_mainMusic.Pause();
