@@ -29,6 +29,7 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
+        
         num_Slots = 7; //there are seven slots 
         m_items = new GameObject[num_Slots];
 
@@ -44,6 +45,7 @@ public class Inventory : MonoBehaviour
     }
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.Tab)) inventoryEnabled = !inventoryEnabled;
 
         if (inventoryEnabled == true) slotHolder.SetActive(true);

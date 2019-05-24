@@ -21,6 +21,6 @@ public class Buttons : MonoBehaviour
     }
     public void LoadTitle()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Game");
     }
 }
